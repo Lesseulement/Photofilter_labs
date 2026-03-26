@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>PhotoFilter Studio | Лазарева В.И.</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="image-bg">
+
+    <nav class="navbar">
+        <div class="logo">PHOTO<span>FILTER</span></div>
+        <div class="nav-links">
+            <a href="#" id="link-home" onclick="showSection('home')" class="active">Главная</a>
+            <a href="#" id="link-goal" onclick="showSection('goal')">Цель</a>
+            <a href="#" id="link-calc" onclick="showSection('calc')">Инструменты</a>
+            <a href="#" id="link-author" onclick="showSection('author')">Автор</a>
+        </div>
+        <div class="nav-controls">
+            <button class="theme-btn" onclick="toggleTheme()">Тема</button>
+            <a href="https://github.com/Lesseulement" target="_blank" class="gh-link">GitHub</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div id="home" class="tab-content">
+            <div class="glass-card">
+                <h1>PhotoFilter Studio</h1>
+                <p>Лабораторная работа №1: Интерфейс фильтров.</p>
+            </div>
+        </div>
+
+        <div id="goal" class="tab-content" style="display: none;">
+            <div class="glass-card">
+                <h3>Цель работы</h3>
+                <p>Изучение HTML, CSS и JS на примере графического редактора.</p>
+            </div>
+        </div>
+
+        <div id="calc" class="tab-content" style="display: none;">
+            <div class="ps-calc">
+                <div class="display" id="result">0</div>
+                <div class="grid">
+                    <button class="btn-ps op">C</button>
+                    <button class="btn-ps op">+/-</button>
+                    <button class="btn-ps op">√</button>
+                    <button class="btn-ps side">/</button>
+                    <button class="btn-ps">7</button>
+                    <button class="btn-ps">8</button>
+                    <button class="btn-ps">9</button>
+                    <button class="btn-ps side">x</button>
+                    <button class="btn-ps">4</button>
+                    <button class="btn-ps">5</button>
+                    <button class="btn-ps">6</button>
+                    <button class="btn-ps side">-</button>
+                    <button class="btn-ps">1</button>
+                    <button class="btn-ps">2</button>
+                    <button class="btn-ps">3</button>
+                    <button class="btn-ps side">+</button>
+                    <button class="btn-ps double">0</button>
+                    <button class="btn-ps">.</button>
+                    <button class="btn-ps action">=</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="author" class="tab-content" style="display: none;">
+            <div class="glass-card">
+                <h3>Об авторе</h3>
+                <p>ЛР выполнила: <b>Лазарева В.И.</b></p>
+                <p>Группа: <b>ИУ5-42Б</b></p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        ЛР выполнила: <b>Лазарева В.И.</b> | Группа: ИУ5-42Б
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -11,167 +11,54 @@
 
 ---
 
-## 1. Программирование логики с помощью JavaScript
+# 1. Программирование логики с помощью JavaScript
 
 Язык программирования JavaScript служит основным инструментом для описания логики и интерактивности веб-страниц. В данной работе с помощью JS мы программируем кнопки калькулятора.
 
-**Как подключить JavaScript к HTML?**
-Есть два способа добавить JavaScript на веб-страницу:
+## 1. Подключение логики и стилей
+Для создания проекта использован модульный подход. Весь исполняемый код вынесен во внешние файлы, что обеспечивает чистоту HTML-разметки и удобство отладки.
 
-1. **Встроенный скрипт** - когда код пишется прямо в HTML-файле внутри тега `<script>`:
-```html
-<script>
-    console.log("Привет, мир!");
-</script>
-```
+ CSS (style.css): Отвечает за темную тему, неоновую подсветку и сеточную модель (Grid) кнопок.
 
-2. **Внешний файл** - когда код хранится в отдельном файле с расширением `.js`:
-```html
-<head>
-    <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="script.js"></script>
-</head>
-```
-Для нашего калькулятора мы используем второй способ, так как это более организованный и профессиональный подход.
+ JS (script.js): Содержит математический движок и обработчики кликов.
 
----
+Подключение в <head>:
 
-## 2. Доступ к HTML-элементам из JavaScript
+HTML
 
-Чтобы управлять элементами на странице, нужно сначала получить к ним доступ.
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 
-Основные методы получения элементов:
-* **По ID (`getElementById`)** - самый распространенный способ:
-```javascript
-let element = document.getElementById("paragraph");
-element.innerHTML = "Измененный текст";
-```
-* **По тегу (`getElementsByTagName`)**:
-```javascript
-let paragraphs = document.getElementsByTagName("p");
-```
-* **По классу (`getElementsByClassName`)**:
-```javascript
-let buttons = document.getElementsByClassName("textRed");
-```
+## 2. Работа с DOM-деревом и событиями
+Для управления интерфейсом в работе использовались методы доступа к элементам по их уникальным идентификаторам.
 
-### Обработчики событий
-Это функции, которые вызываются при совершении какого-либо события (например, клика мыши).
-Основные события:
-* `click` – клик левой кнопкой мыши.
-* `mouseover` / `mouseout` – наведение мыши на элемент.
-* `keydown` и `keyup` – нажатие и отпускание клавиши клавиатуры.
+Получение элемента: const outputText = document.getElementById("output_text"); — через эту переменную осуществляется вывод всех чисел.
 
-**Способы задания обработчиков:**
-1. Через свойство элемента (используется в нашей работе):
-```javascript
-element.onclick = function() {
-    alert('Кнопка нажата!');
+Обработка кликов: Использовано свойство .onclick. При нажатии на цифровую кнопку вызывается функция, которая дописывает символ в строку операнда.
+
+## 3. Программирование вычислительной логики
+В отличие от стандартных примеров, в данном проекте решена проблема Floating Point Precision (ошибки округления в JS) и переполнения экрана.
+
+Форматирование вывода
+Чтобы длинные дробные числа (например, 1481.333333333339) не выходили за границы калькулятора, применено ограничение знаков:
+
+# JavaScript
+
+if (!Number.isInteger(res)) {
+    res = parseFloat(res.toFixed(8)); // Оставляем максимум 8 знаков
 }
-```
-2. Через метод `addEventListener` (современный стандарт):
-```javascript
-element.addEventListener('click', () => {
-    alert('Кнопка нажата!');
-});
-```
+Обработка деления на ноль
+Добавлена логическая проверка, предотвращающая системную ошибку Infinity:
 
-### Пример взаимодействия
-Рассмотрим простой пример сложения двух чисел из полей ввода:
-```html
-<input id="a" type="number" placeholder="Первое число">
-<input id="b" type="number" placeholder="Второе число">
-<button id="equal">=</button>
-<span id="result"></span>
-```
-```javascript
-document.getElementById('equal').onclick = function() {
-    // Получаем значения и приводим их к числу (Number), чтобы избежать склеивания строк
-    const a = Number(document.getElementById('a').value);
-    const b = Number(document.getElementById('b').value);
-    const sum = a + b;
-    // Выводим результат на страницу
-    document.getElementById('result').textContent = 'Результат: ' + sum;
-}
-```
+# JavaScript
 
----
-
-## 3. Программирование кнопок калькулятора
-
-Разберем код реализации логики нашего калькулятора. В калькуляторе число задается по цифрам, поэтому добавлены переменные для хранения операндов и выбранной операции.
-
-### Шаг 1: Инициализация переменных
-```javascript
-let a = '';                  // Первое число
-let b = '';                  // Второе число
-let expressionResult = '';   // Результат вычисления
-let selectedOperation = null; // Выбранная операция
-```
-
-### Шаг 2: Получение доступа к элементам
-```javascript
-const outputElement = documentyId("result");
-// Получаем все кнопки с цифрами по совпадению начала ID
-const digitButtons = document.querySelectorAll('[id ^= "btn_digit_"]');
-```
-
-### Шаг 3: Функция обработки нажатия цифр
-```javascript
-function onDigitButtonClicked(digit) {
-    if (!selectedOperation) {
-        // Формируем первое число
-        if ((digit != '.') || (digit == '.' && !a.includes(digit))) {
-            a += digit;
-        }
-        outputElement.innerHTML = a;
-    } else {
-        // Формируем второе число
-        if ((digit != '.') || (digit == '.' && !b.includes(digit))) {
-            b += digit;
-            outputElement.innerHTML = b;
-        }
+if (selectedOperation === '/') {
+    if (n2 === 0) {
+        alert("На ноль делить нельзя!");
+        return;
     }
+    res = n1 / n2;
 }
-```
-
-### Шаг 4: Настройка обработчиков
-```javascript
-digitButtons.forEach(button => {
-    button.onclick = function() {
-        const digitValue = button.innerHTML;
-        onDigitButtonClicked(digitValue);
-    }
-});
-
-document.getElementById("btn_op_plus").onclick = function() {
-    if (a === '') return;
-    selectedOperation = '+';
-}
-// Аналогично для минус, умножить, разделить...
-```
-
-### Шаг 5: Вычисление результата (Кнопка Равно)
-```javascript
-document.getElementById("btn_op_equal").onclick = function() {
-    if (a === '' || b === '' || !selectedOperation) return;
-
-    // Используем switch для выбора операции
-    switch(selectedOperation) {
-        case 'x': expressionResult = (+a) * (+b); break;
-        case '+': expressionResult = (+a) + (+b); break;
-        case '-': expressionResult = (+a) - (+b); break;
-        case '/': expressionResult = (+a) / (+b); break;
-    }
-
-    a = expressionResult.toString();
-    b = '';
-    selectedOperation = null;
-    outputElement.innerHTML = a;
-}
-```
-
----
 
 ## 4. Запуск калькулятора с помощью Live Server
 
@@ -184,8 +71,38 @@ document.getElementById("btn_op_equal").onclick = function() {
 ---
 
 ## 5. Выполнение заданий по варианту (Дополнения V ATM)
+В рамках самостоятельной проработки базовый функционал калькулятора был расширен дополнительными вычислительными и визуальными возможностями.
 
-В рамках самостоятельной проработки базовый функционал калькулятора был расширен.
+# 5.1. Конвертация в шестнадцатеричную систему (HEX): 
+В интерфейс добавлена специализированная кнопка HEX. При её нажатии текущее десятичное число преобразуется в шестнадцатеричный формат с помощью метода toString(16).toUpperCase(). Это позволяет пользователю мгновенно получать HEX-код введенного значения.
 
-* **5.1. Управление с клавиатуры:** На объект `document` добавлен обработчик `keydown`. Нажатия физических клавиш сопоставляются с ID виртуальных кнопок, после чего вызывается метод `.click()` и добавляется класс временной подсветки `.kb_active`.
-* **5.2. Перевод в 16-ричную систему (HEX):** Добавлена функция конвертации с помощью встроенного метода `toString(16).toUpperCase()`. При вводе новых цифр калькулятор сбрасывает режим HEX и начинает новый пример..getElementB
+# 5.2. Динамическая индикация состояний (Цветовая логика):
+Реализована система визуального отклика на результат конвертации. В зависимости от содержания полученной HEX-строки, цвет шрифта на экране вывода (#output_text) изменяется автоматически:
+
+Если результат содержит символ «A» — текст окрашивается в красный;
+
+Если результат содержит символ «B» — текст окрашивается в синий;
+
+Если результат содержит символ «C» — текст окрашивается в зеленый;
+
+При значении «0» текст становится черным, во всех остальных случаях возвращается стандартный цвет.
+
+# Реализация
+// Перевод в 16-ричную систему
+document.getElementById("btn_op_hex").onclick = () => {
+    if (a === "") return;
+    let hexRes = parseInt(a).toString(16).toUpperCase();
+    a = hexRes;
+    outputText.innerText = a;
+    updateColor(a);
+};
+
+// Функция управления цветом вывода
+function updateColor(value) {
+    outputText.style.color = "black"; // Сброс в дефолт
+    
+    if (value.includes("A")) outputText.style.color = "red";
+    else if (value.includes("B")) outputText.style.color = "blue";
+    else if (value.includes("C")) outputText.style.color = "green";
+    else if (value === "0") outputText.style.color = "black";
+}

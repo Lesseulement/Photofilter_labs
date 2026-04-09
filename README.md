@@ -1,7 +1,5 @@
 # ЛР 2. Calculator: JavaScript
 
-ЛР 2. Calculator: JavaScript & UI Customization
-
 Цель данной лабораторной работы — знакомство с инструментами построения пользовательских интерфейсов: HTML, CSS и JavaScript. В ходе работы реализован интерактивный калькулятор с функциями конвертации систем счисления и динамической стилизации.
 
 3. Программирование вычислительной логики
@@ -29,7 +27,7 @@ if (selectedOperation === '/') {
     }
     res = n1 / n2;
 }
-
+```
 
 4. Дополнительное задание: Глобальный курсив
 Задание: Установить курсивное начертание для всех элементов интерфейса (текст, кнопки, экран).
@@ -38,7 +36,7 @@ if (selectedOperation === '/') {
 * {
     font-style: italic !important;
 }
-
+```
 
 5. Выполнение заданий по варианту (HEX & Color Logic)
 
@@ -86,3 +84,4 @@ function updateColor(value) {
     else if (value.includes("C")) outputText.style.color = "green";
     else if (value === "0") outputText.style.color = "black";
 }
+```

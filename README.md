@@ -42,16 +42,15 @@ HTML
 Форматирование вывода
 Чтобы длинные дробные числа (например, 1481.333333333339) не выходили за границы калькулятора, применено ограничение знаков:
 
-# JavaScript
-
+// Проверка: если число дробное, ограничиваем вывод до 8 знаков после запятой
 if (!Number.isInteger(res)) {
-    res = parseFloat(res.toFixed(8)); // Оставляем максимум 8 знаков
+    res = parseFloat(res.toFixed(8)); 
 }
+
 Обработка деления на ноль
 Добавлена логическая проверка, предотвращающая системную ошибку Infinity:
 
-# JavaScript
-
+// Проверка деления на ноль и вычисление результата
 if (selectedOperation === '/') {
     if (n2 === 0) {
         alert("На ноль делить нельзя!");
@@ -88,14 +87,7 @@ if (selectedOperation === '/') {
 При значении «0» текст становится черным, во всех остальных случаях возвращается стандартный цвет.
 
 # Реализация
-// Перевод в 16-ричную систему
-document.getElementById("btn_op_hex").onclick = () => {
-    if (a === "") return;
-    let hexRes = parseInt(a).toString(16).toUpperCase();
-    a = hexRes;
-    outputText.innerText = a;
-    updateColor(a);
-};
+// Перевод в 16-ричную систему document.getElementById("btn_op_hex").onclick = () => { if (a === "") return; let hexRes = parseInt(a).toString(16).toUpperCase(); a = hexRes; outputText.innerText = a; updateColor(a); };
 
 // Функция управления цветом вывода
 function updateColor(value) {

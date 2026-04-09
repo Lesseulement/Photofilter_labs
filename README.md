@@ -21,7 +21,7 @@ if (!Number.isInteger(res)) {
 Обработка деления на ноль
 
 Добавлена логическая проверка, предотвращающая ошибку Infinity и выводящая предупреждение пользователю:
-
+```javascript
 if (selectedOperation === '/') {
     if (n2 === 0) {
         alert("На ноль делить нельзя!");
@@ -32,12 +32,9 @@ if (selectedOperation === '/') {
 
 
 4. Дополнительное задание: Глобальный курсив
-
 Задание: Установить курсивное начертание для всех элементов интерфейса (текст, кнопки, экран).
 
-Реализация: Был использован универсальный селектор *, который принудительно меняет начертание шрифта для всех узлов DOM-дерева.
-
-/* Глобальное применение курсивного начертания */
+```javascript
 * {
     font-style: italic !important;
 }
@@ -76,7 +73,9 @@ if (selectedOperation === '/') {
 При значении «0» текст становится черным, во всех остальных случаях возвращается стандартный цвет.
 
 # Реализация
-// Перевод в 16-ричную систему document.getElementById("btn_op_hex").onclick = () => { if (a === "") return; let hexRes = parseInt(a).toString(16).toUpperCase(); a = hexRes; outputText.innerText = a; updateColor(a); };
+```javascript
+// Перевод в 16-ричную систему 
+document.getElementById("btn_op_hex").onclick = () => { if (a === "") return; let hexRes = parseInt(a).toString(16).toUpperCase(); a = hexRes; outputText.innerText = a; updateColor(a); };
 
 // Функция управления цветом вывода
 function updateColor(value) {

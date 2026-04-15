@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <style>
+        /* Твои текущие стили для анимации карточек */
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5) !important; 
+        }
+
+        /* --- НОВЫЙ БЛОК: Делаем скроллбар красивым --- */
+        .custom-scroll::-webkit-scrollbar {
+            height: 8px; /* Высота горизонтальной полоски */
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #121417; /* Цвет дорожки, по которой едет ползунок */
+            border-radius: 10px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #2d3238; /* Цвет самого ползунка */
+            border-radius: 10px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #00a8ff; /* Цвет ползунка при наведении (сделал голубым под стиль PhotoCore) */
+        }
+        /* Для Firefox */
+        .custom-scroll {
+            scrollbar-width: thin;
+            scrollbar-color: #2d3238 #121417;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>PhotoCore</title>
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background-color: #0b0e11;">
+    <div id="root"></div> 
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>PHOTOCORE | Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="body_bg" class="bg1">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" id="logo_home">PHOTO<span class="accent">CORE</span></a>
+            
+            <div class="nav-menu">
+                <a href="#" id="link_target">Цель</a>
+                <a href="#" id="link_calc" class="active">Калькулятор</a>
+                <a href="#" id="link_author">Автор</a>
+            </div>
+
+            <div class="nav-actions">
+                <button class="action-btn theme-toggle" id="theme_btn">Сменить тему</button>
+                <a href="https://github.com/Lesseulement/Photofilter_labs" target="_blank" class="action-btn github-link">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div id="section_main" class="info-block" style="display: none;">
+            <h1>Добро пожаловать!</h1>
+            <p>Это ваш персональный редактор изображений и инструментов.</p>
+        </div>
+
+        <div id="section_target" class="info-block" style="display: none;">
+            <h1>Цель проекта</h1>
+            <p>Создание веб-калькулятора с функциями систем счисления.</p>
+        </div>
+
+        <div id="section_author" class="info-block" style="display: none;">
+            <h1>Автор</h1>
+            <p>Студент группы ИУ5-42Б: Лазарева В.И.</p>
+        </div>
+
+        <div id="section_calc" class="pixlr-editor-frame">
+            <div id="result" class="result">
+                <span id="output_text">0</span>
+            </div>
+            
+            <div class="grid">
+                <button class="btn-ps" style="color:#ff453a; grid-column: span 2;" id="btn_op_clear">C</button>
+                <button class="btn-ps" style="color:#00a8ff" id="btn_op_backspace">⌫</button>
+                <button class="btn-ps" style="color:#00a8ff" id="btn_op_div">/</button>
+
+                <button class="btn-ps" id="btn_digit_7">7</button>
+                <button class="btn-ps" id="btn_digit_8">8</button>
+                <button class="btn-ps" id="btn_digit_9">9</button>
+                <button class="btn-ps" style="color:#00a8ff" id="btn_op_mult">x</button>
+
+                <button class="btn-ps" id="btn_digit_4">4</button>
+                <button class="btn-ps" id="btn_digit_5">5</button>
+                <button class="btn-ps" id="btn_digit_6">6</button>
+                <button class="btn-ps" style="color:#00a8ff" id="btn_op_minus">-</button>
+
+                <button class="btn-ps" id="btn_digit_1">1</button>
+                <button class="btn-ps" id="btn_digit_2">2</button>
+                <button class="btn-ps" id="btn_digit_3">3</button>
+                <button class="btn-ps" style="color:#00a8ff" id="btn_op_plus">+</button>
+
+                <button class="btn-ps" id="btn_op_sign">+/-</button>
+                <button class="btn-ps" id="btn_digit_0">0</button>
+                <button class="btn-ps" id="btn_op_hex" style="color:#32d74b; font-weight:bold;">HEX</button>
+                <button class="btn-ps equal-btn" id="btn_op_equal">=</button>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

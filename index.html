@@ -2,90 +2,67 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>PHOTOCORE | Digital Studio</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>PhotoCore - 3D Gallery</title>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/examples/jsm/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+
+    <style>
+        body {
+            background-color: #0b0e11;
+            color: white;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+            background-color: #1a1d21 !important;
+            border: 1px solid #2d3238 !important;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5) !important; 
+        }
+
+        #canvas-container {
+            width: 100%;
+            height: 500px;
+            background: radial-gradient(circle, #2d3238 0%, #0b0e11 100%);
+            border-radius: 20px;
+            position: relative;
+            cursor: grab;
+        }
+
+        .custom-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #121417;
+            border-radius: 10px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #2d3238;
+            border-radius: 10px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #00a8ff;
+        }
+    </style>
 </head>
-<body class="bg-image-1">
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo" onclick="showSection('home')">
-                PHOTO<span class="accent">CORE</span>
-            </a>
+<body>
 
-            <div class="nav-menu">
-                <a href="#" id="link-goal" onclick="showSection('goal')">Цель</a>
-                <a href="#" id="link-calc" onclick="showSection('calc')">Калькулятор</a>
-                <a href="#" id="link-author" onclick="showSection('author')">Автор</a>
-            </div>
+    <div id="root"></div> 
 
-            <div class="nav-actions">
-                <button class="action-btn theme-toggle" onclick="toggleTheme()">
-                    <span>🌓</span> Фон
-                </button>
-                <a href="https://github.com/" target="_blank" class="action-btn github-btn">
-                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt=""> GitHub
-                </a>
-            </div>
-        </div>
-    </nav>
+    
+    <script src="main.js" type="module"></script>
 
-    <main class="container">
-        <div id="home" class="tab-content">
-            <div class="pixlr-card">
-                <h2>Творческая лаборатория</h2>
-                <p>Добро пожаловать в PHOTOCORE. Теперь верстка стабильна и ничего не съезжает.</p>
-            </div>
-        </div>
-
-        <div id="goal" class="tab-content" style="display: none;">
-            <div class="pixlr-card">
-                <h2>Цель работы</h2>
-                <p>Разработка адаптивного интерфейса с использованием современных Flexbox-контейнеров.</p>
-            </div>
-        </div>
-
-        <div id="calc" class="tab-content" style="display: none;">
-            <div class="pixlr-editor-frame">
-                <div id="result" class="display">0</div>
-                <div class="grid">
-                    <button class="btn-ps" style="color:#ff453a; grid-column: span 2;" id="btn_op_clear">C</button>
-                    <button class="btn-ps" style="color:#00a8ff" id="btn_op_backspace">⌫</button>
-                    <button class="btn-ps" style="color:#00a8ff" id="btn_op_div">/</button>
-
-                    <button class="btn-ps" id="btn_digit_7">7</button>
-                    <button class="btn-ps" id="btn_digit_8">8</button>
-                    <button class="btn-ps" id="btn_digit_9">9</button>
-                    <button class="btn-ps" style="color:#00a8ff" id="btn_op_mult">x</button>
-
-                    <button class="btn-ps" id="btn_digit_4">4</button>
-                    <button class="btn-ps" id="btn_digit_5">5</button>
-                    <button class="btn-ps" id="btn_digit_6">6</button>
-                    <button class="btn-ps" style="color:#00a8ff" id="btn_op_minus">-</button>
-
-                    <button class="btn-ps" id="btn_digit_1">1</button>
-                    <button class="btn-ps" id="btn_digit_2">2</button>
-                    <button class="btn-ps" id="btn_digit_3">3</button>
-                    <button class="btn-ps" style="color:#00a8ff" id="btn_op_plus">+</button>
-
-                    <button class="btn-ps" id="btn_op_sign">+/-</button>
-                    <button class="btn-ps" id="btn_digit_0">0</button>
-                    <button class="btn-ps" id="btn_digit_000">000</button>
-                    <button class="btn-ps equal-btn" id="btn_op_equal">=</button>
-
-                    <button class="btn-ps" style="color:#00a8ff" id="btn_op_sqrt">√</button>
-                    <button class="btn-ps" style="color:#00a8ff; grid-column: span 3;" id="btn_op_sqr">x²</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="author" class="tab-content" style="display: none;">
-            <div class="pixlr-card">
-                <h2>Автор</h2>
-                <p>Твое Имя<br>Группа ХХ-ХХ</p>
-            </div>
-        </div>
-    </main>
-
-    <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,23 @@
+{
+  "name": "lab3_filters",
+  "version": "1.0.0",
+  "description": "Проект фоторедактора на компонентах",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "pixlr",
+    "photocore",
+    "components"
+  ],
+  "author": "Лазарева В.И.",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "bootstrap": "^5.3.8"
+  },
+  "devDependencies": {
+    "jest": "^30.3.0"
+  }
+}

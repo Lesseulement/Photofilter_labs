@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>PhotoCore - 3D Gallery</title>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/examples/jsm/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+
+    <style>
+        body {
+            background-color: #0b0e11;
+            color: white;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+            background-color: #1a1d21 !important;
+            border: 1px solid #2d3238 !important;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5) !important; 
+        }
+
+        #canvas-container {
+            width: 100%;
+            height: 500px;
+            background: radial-gradient(circle, #2d3238 0%, #0b0e11 100%);
+            border-radius: 20px;
+            position: relative;
+            cursor: grab;
+        }
+
+        .custom-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #121417;
+            border-radius: 10px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #2d3238;
+            border-radius: 10px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #00a8ff;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="root"></div> 
+
+    
+    <script src="main.js" type="module"></script>
+
+</body>
+</html>
